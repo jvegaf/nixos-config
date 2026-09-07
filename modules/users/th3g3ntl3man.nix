@@ -7,8 +7,9 @@
         "networkmanager"
         "video"
         "audio"
+        "input"
       ];
-      shell = pkgs.zsh;
+      shell = pkgs.bash;
     };
   };
 

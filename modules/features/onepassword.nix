@@ -3,19 +3,21 @@
     programs._1password.enable = true;
     programs._1password-gui = {
       enable = true;
-      polkitPolicyOwners = [ "hao" ];
+      polkitPolicyOwners = [ "th3g3ntl3man" ];
     };
   };
 
-  flake.homeModules.onepassword = { pkgs, lib, ... }: lib.mkIf pkgs.stdenv.isLinux {
-    systemd.user.services.onepassword = {
-      Unit.Description = "1Password";
-      Unit.After = [ "graphical-session.target" ];
-      Install.WantedBy = [ "graphical-session.target" ];
-      Service = {
-        ExecStart = "${lib.getExe pkgs._1password-gui} --silent";
-        Restart = "on-failure";
+  flake.homeModules.onepassword =
+    { pkgs, lib, ... }:
+    lib.mkIf pkgs.stdenv.isLinux {
+      systemd.user.services.onepassword = {
+        Unit.Description = "1Password";
+        Unit.After = [ "graphical-session.target" ];
+        Install.WantedBy = [ "graphical-session.target" ];
+        Service = {
+          ExecStart = "${lib.getExe pkgs._1password-gui} --silent";
+          Restart = "on-failure";
+        };
       };
     };
-  };
 }

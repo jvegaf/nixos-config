@@ -18,6 +18,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
+    wrappers.url = "github:Lassulus/wrappers";
     wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -32,33 +33,30 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    treefmt-nix.url = "github:numtide/treefmt-nix";
-    treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
-
-    nur.url = "github:nix-community/NUR";
-    yazi.url = "github:sxyazi/yazi";
+    # nur.url = "github:nix-community/NUR";
+    # yazi.url = "github:sxyazi/yazi";
     hardware.url = "github:NixOS/nixos-hardware/master";
-    mangowm.url = "github:mangowm/mango";
-    mangowm.inputs.nixpkgs.follows = "nixpkgs";
-    voxtype.url = "github:peteonrails/voxtype";
-    dms = {
-      url = "github:AvengeMedia/DankMaterialShell/stable";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    dms-plugin-registry = {
-      url = "github:AvengeMedia/dms-plugin-registry";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixvim.url = "github:nix-community/nixvim";
-    nixvim.inputs.flake-parts.follows = "flake-parts";
+    # mangowm.url = "github:mangowm/mango";
+    # mangowm.inputs.nixpkgs.follows = "nixpkgs";
+    # voxtype.url = "github:peteonrails/voxtype";
+    # dms = {
+    #   url = "github:AvengeMedia/DankMaterialShell/stable";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    # dms-plugin-registry = {
+    #   url = "github:AvengeMedia/dms-plugin-registry";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    # nixvim.url = "github:nix-community/nixvim";
+    # nixvim.inputs.flake-parts.follows = "flake-parts";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
-    llm-agents.url = "github:numtide/llm-agents.nix";
-
-    superpowers = {
-      url = "github:obra/superpowers";
-      flake = false;
-    };
+    # llm-agents.url = "github:numtide/llm-agents.nix";
+    #
+    # superpowers = {
+    #   url = "github:obra/superpowers";
+    #   flake = false;
+    # };
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);

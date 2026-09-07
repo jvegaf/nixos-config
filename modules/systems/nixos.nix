@@ -1,26 +1,19 @@
 { self, inputs, ... }: {
   flake.nixosModules.nixos = { pkgs, lib, ... }: {
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-    nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-      "1password"
-      "1password-cli"
-      "claude-code"
-      "ferdium"
-      "obsidian"
-      "plex-desktop"
-      "plexamp"
-      "slack"
-      "steam"
-      "steam-original"
-      "steam-run"
-      "steam-unwrapped"
-      "vivaldi"
-      "widevine-cdm"
+    nix.settings.experimental-features = [
+      "nix-command"
+      "flakes"
     ];
 
+    nixpkgs.config.allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "1password"
+        "1password-cli"
+      ];
+
     # Locale and timezone
-    time.timeZone = "America/Chicago";
+    time.timeZone = "Europe/Madrid";
     i18n.defaultLocale = "en_US.UTF-8";
     i18n.extraLocaleSettings = {
       LC_ADDRESS = "en_US.UTF-8";

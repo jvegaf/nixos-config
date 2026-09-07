@@ -1,12 +1,12 @@
-{ self, inputs, ... }: {
-  flake.nixosModules.desktop = { pkgs, ... }: {
+{ self, ... }: {
+  flake.nixosModules.desktop = { ... }: {
     imports = [
       self.nixosModules.nixos
       self.nixosModules.networking
       self.nixosModules.fonts
       self.nixosModules.niri
       self.nixosModules.noctalia
-      self.nixosModules.printing
+      # self.nixosModules.printing
     ];
   };
 }

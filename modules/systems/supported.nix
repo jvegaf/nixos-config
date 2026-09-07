@@ -1,7 +1,24 @@
-{ ... }: {
-  systems = [
-    "x86_64-linux"
-    "aarch64-linux"
-    "aarch64-darwin"
+{ inputs, ... }: {
+  imports = [
+    inputs.wrapper-modules.flakeModules.wrappers
+
+    # currently unused
+    inputs.flake-parts.flakeModules.modules
   ];
+
+  options = {
+    flake = inputs.flake-parts.lib.mkSubmoduleOptions {
+      wrappersModules = inputs.nixpkgs.lib.mkOption {
+        default = { };
+      };
+    };
+  };
+
+  config = {
+    systems = [
+      "x86_64-linux"
+      "aarch64-linux"
+      "aarch64-darwin"
+    ];
+  };
 }

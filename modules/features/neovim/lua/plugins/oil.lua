@@ -1,23 +1,24 @@
--- https://github.com/stevearc/oil.nvim
 return {
-  "stevearc/oil.nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
-  keys = {
-    { "-", "<cmd>Oil<CR>", desc = "Open parent directory as buffer" },
-  },
-  cmd = "Oil",
-  config = function()
-    require("oil").setup({
-      columns = { "icon" },
-      view_options = {
-        show_hidden = true,
-      },
-      keymaps = {
-        ["<C-v>"] = "actions.select_vsplit",
-        ["<C-x>"] = "actions.select_split",
-        ["<C-s>"] = false,
-        ["<C-h>"] = false,
-      },
-    })
-  end,
+    "oil-nvim",
+    cmd = "Oil",
+    after = function()
+        function _G.get_oil_winbar()
+            local bufnr = vim.api.nvim_win_get_buf(vim.g.statusline_winid)
+            local dir = require("oil").get_current_dir(bufnr)
+            if dir then
+                return vim.fn.fnamemodify(dir, ":~")
+            else
+                return vim.api.nvim_buf_get_name(0)
+            end
+        end
+
+        require("oil").setup({
+            win_options = {
+                winbar = "%!v:lua.get_oil_winbar()",
+            },
+        })
+    end,
+    -- keys = {
+    --     { "<leader>e", "<CMD>Oil<CR>", desc = "Open oil" },
+    -- },
 }

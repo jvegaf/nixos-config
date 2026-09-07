@@ -1,101 +1,123 @@
--- https://github.com/L3MON4D3/LuaSnip
--- `$TM_*` variables are available.
--- For example, `$TM_FILENAME` to insert the current filename.
--- Also, can use `print(vim.inspect(arg))` to test things.
-
-return {
-  "L3MON4D3/LuaSnip",
-  event = "InsertEnter",
-  build = "make install_jsregexp",
-  keys = {
-    {
-      "<C-k>",
-      function()
-        local ls = require("luasnip")
-        if ls.expand_or_locally_jumpable() then
-          ls.expand_or_jump()
-        end
-      end,
-      mode = { "i", "s" },
-      desc = "Expand or jump to next snippet location",
-    },
-
-    {
-      "<C-j>",
-      function()
-        local ls = require("luasnip")
-        if ls.jumpable(-1) then
-          ls.jump(-1)
-        end
-      end,
-      mode = { "i", "s" },
-      desc = "Jump backwards in snippet",
-    },
-
-    {
-      "<C-l>",
-      function()
-        local ls = require("luasnip")
-        if ls.choice_active() then
-          ls.change_choice(1)
-        end
-      end,
-      mode = { "i", "s" },
-      desc = "Switch between snippet choices",
-    },
-
-    {
-      "<leader>se",
-      require("snippets").edit_current_file_type,
-      desc = "[S]nippets - [E]dit current filetype)",
-    },
-
-    {
-      "<leader>sE",
-      require("snippets").edit_with_prompt,
-      desc = "[S]nippets - [E]dit prompt for filetype",
-    },
-
-    {
-      "<leader>sl",
-      function()
-        require("luasnip.extras.snippet_list").open()
-      end,
-      desc = "[S]nippets - [L]ist available snippets for buffer",
-    },
-  },
-  config = function()
+local function config()
+    local M = require("ls-shorthands")
     local ls = require("luasnip")
-    local types = require("luasnip.util.types")
 
-    ls.setup({
-      enable_autosnippets = true,
-
-      ext_opts = {
-        [types.choiceNode] = {
-          active = {
-            virt_text = { { "●", "ErrorMsg" } },
-          },
-        },
-        [types.insertNode] = {
-          active = {
-            virt_text = { { "●", "WarningMsg" } },
-          },
-        },
-      },
-
-      -- New version of `history`, which allows jumping back into snippets after leaving
-      --  if (history) lot nil, keep_roots, link_roots, and link_children will be set to the value of history, and exit_roots will set to inverse value of history.
-      keep_roots = true,
-      link_roots = true,
-      link_children = true,
-      exit_roots = false,
-
-      delete_check_events = { "TextChanged" },
-      region_check_events = { "CursorMoved", "CursorHold", "InsertEnter" }, -- Leave the current snippet if the cursor is outside it's region
-      update_events = { "TextChanged", "TextChangedI" }, -- Updates snippets as you type
+    ls.add_snippets("all", {
+        M.s("__colorscheme_red", { M.t("#fb4934"), }),
+        M.s("__colorscheme_green", { M.t("#b8bb26"), }),
+        M.s("__colorscheme_magenta", { M.t("#d3869b"), }),
+        M.s("__colorscheme_blue", { M.t("#7daea3"), }),
+        M.s("__colorscheme_darkblue", { M.t("#47909e"), }),
+        M.s("__colorscheme_cyan", { M.t("#8ec07c"), }),
+        M.s("__colorscheme_yellow", { M.t("#fabd2f"), }),
+        M.s("__colorscheme_orange", { M.t("#f28534"), }),
+        M.s("__colorscheme_fg", { M.t("#fbf1c7"), }),
+        M.s("__colorscheme_fg_dark", { M.t("#ebdbb2"), }),
+        M.s("__colorscheme_bg", { M.t("#282828"), }),
     })
 
-    require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.dotfiles/nvim/lua/snippets" })
-  end,
+    local function comment_string(_, _, _)
+        local cs = string.gsub(vim.opt.commentstring["_value"], "%%s", "")
+        cs = string.gsub(cs, " ", "")
+        if cs == "/**/" then
+            cs = "//"
+        end
+        return cs
+    end
+
+    local function smart_heading(args, _, user_args)
+        local text_length = string.len(args[1][1])
+        local newstring = ""
+
+        if user_args.compensate == true then
+            local is_even = text_length % 2
+            if is_even == 1 then
+                newstring = newstring .. user_args.symbol
+            end
+        end
+
+        for _ = 0, ((user_args.count - text_length) / 2 - 3), 1 do
+            newstring = newstring .. user_args.symbol
+        end
+
+        if user_args.compensate then
+            return (' ' .. newstring .. user_args.outer)
+        else
+            return (user_args.outer .. newstring .. ' ')
+        end
+    end
+
+    local function symbol_line(symbol, amount)
+        local newstring = ""
+        for _ = 0, amount, 1 do
+            newstring = newstring .. symbol
+        end
+        return M.t(newstring)
+    end
+
+    local function comment_symbol_line(symbol, amount)
+        return M.sn(2, {
+            M.f(comment_string),
+            M.t(" "),
+            symbol_line('=', 63),
+            M.t(" "),
+            M.f(comment_string),
+
+        })
+    end
+
+    local function smart_header_line(filled)
+        local fillSymbol = ' '
+
+        if filled then
+            fillSymbol = "="
+        end
+
+        return M.sn(1, {
+            M.f(comment_string),
+            M.t(" "),
+            M.f(smart_heading, { 1 },
+                { user_args = { { compensate = false, symbol = fillSymbol, count = 64, outer = '=' } }, }),
+            M.i(1),
+            M.f(smart_heading, { 1 },
+                { user_args = { { compensate = true, symbol = fillSymbol, count = 64, outer = '=' } } }),
+            M.t(" "),
+            M.f(comment_string),
+
+        })
+    end
+
+    -- ================================================================ --
+    -- =                           HEADER1                            = --
+    -- ================================================================ --
+
+    ls.add_snippets("all", {
+        M.s("__HEADER1", {
+            comment_symbol_line(),
+            M.t({ "", "" }),
+            smart_header_line(),
+            M.t({ "", "" }),
+            comment_symbol_line(),
+            M.t({ "", "" }),
+        })
+    })
+
+    ls.add_snippets("all", {
+        M.s("__INNERHEADER", {
+            smart_header_line()
+        })
+    })
+    -- =========================== HEADER2 ============================ --
+
+    ls.add_snippets("all", {
+        M.s("__HEADER2", {
+            smart_header_line(true)
+        })
+    })
+end
+
+return {
+    "luasnip",
+    lazy = false,
+    after = config
 }
