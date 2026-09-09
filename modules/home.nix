@@ -5,6 +5,11 @@
       self.nixosModules.onepassword
     ];
 
+    nixpkgs.config = {
+      allowBroken = true;
+      allowUnfree = true;
+    };
+
     home-manager = {
       useGlobalPkgs = true;
       useUserPackages = true;

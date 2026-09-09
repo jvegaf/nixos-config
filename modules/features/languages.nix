@@ -19,7 +19,6 @@
 
       # Node
       nodejs
-      nodePackages.neovim
     ];
   };
 }
