@@ -1,0 +1,20 @@
+{
+    "change_filament_gcode": "M600",
+    "from": "User",
+    "inherits": "Creality K1C 0.4 nozzle",
+    "layer_change_gcode": "SET_PRINT_STATS_INFO CURRENT_LAYER={layer_num + 1}\n;AFTER_LAYER_CHANGE\n;[layer_z]",
+    "machine_pause_gcode": "M600",
+    "machine_start_gcode": "SET_PRINT_STATS_INFO TOTAL_LAYER=[total_layer_count]\nM140 S0\nM104 S0\nSTART_PRINT EXTRUDER_TEMP=[nozzle_temperature_initial_layer] BED_TEMP=[bed_temperature_initial_layer_single]",
+    "name": "K1C Road Runner",
+    "print_host": "192.168.8.177",
+    "printer_agent": "moonraker",
+    "printer_extruder_id": [
+        "1"
+    ],
+    "printer_extruder_variant": [
+        "Direct Drive Standard"
+    ],
+    "printer_settings_id": "K1C Road Runner",
+    "time_lapse_gcode": "TIMELAPSE_TAKE_FRAME",
+    "version": "2.3.2.60"
+}
