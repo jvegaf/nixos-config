@@ -51,7 +51,7 @@
         settings = {
           # Next Edit Suggestions (NES) - Multi-line refactorings from Copilot
           nes = {
-            enabled = false;
+            enabled = true;
             debounce = 100;
             diff = {
               inline = "words";
@@ -67,7 +67,6 @@
               events = [
                 "TextChangedI"
                 "InsertEnter"
-                "esc"
               ];
               esc = true;
             };

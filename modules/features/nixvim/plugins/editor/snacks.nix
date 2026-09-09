@@ -286,16 +286,6 @@
       snacks = {
         enable = true;
 
-        # luaConfig.pre = ''
-        #   picker = {
-        #     sources = {
-        #       explorer = {
-        #         focus = "list",
-        #         auto_close = true,
-        #       },
-        #     },
-        #   },
-        # '';
         settings = {
           bigfile.enabled = true;
           explorer = {
@@ -321,7 +311,7 @@
             enabled = true;
             sources = {
               explorer = {
-                auto_close= true;
+                auto_close = true;
               };
             };
             win = {

@@ -3,8 +3,6 @@
   ...
 }:
 {
-  nixpkgs.config.allowUnfree = true;
-
   perSystem =
     { inputs', pkgs, ... }:
     {

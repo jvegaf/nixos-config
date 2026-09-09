@@ -47,8 +47,8 @@
     #   url = "github:AvengeMedia/dms-plugin-registry";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-    # nixvim.url = "github:nix-community/nixvim";
-    # nixvim.inputs.flake-parts.follows = "flake-parts";
+    nixvim.url = "github:nix-community/nixvim";
+    nixvim.inputs.flake-parts.follows = "flake-parts";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     # llm-agents.url = "github:numtide/llm-agents.nix";
