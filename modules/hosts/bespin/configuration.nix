@@ -1,5 +1,5 @@
-{ self, inputs, ... }: {
-  flake.nixosModules.bespin-configuration = { pkgs, lib, config, ... }: {
+{ self, ... }: {
+  flake.nixosModules.bespin-configuration = { ... }: {
     imports = [
       self.nixosModules.bespin-hardware
       self.nixosModules.desktop
