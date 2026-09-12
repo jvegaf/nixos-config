@@ -254,7 +254,7 @@ The first host is a VM for testing. Real hosts (endor, etc.) come later.
     environment.systemPackages = [ pkgs.xwayland-satellite ];
   };
 
-  perSystem = { pkgs, lib, self', ... }: lib.optionalAttrs pkgs.stdenv.isLinux {
+  perSystem = { pkgs, lib, self', ... }: lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
     packages.myNiri = inputs.wrapper-modules.wrappers.niri.wrap {
       inherit pkgs;
       settings = {
@@ -279,7 +279,7 @@ The first host is a VM for testing. Real hosts (endor, etc.) come later.
 
 ```nix
 { self, inputs, ... }: {
-  perSystem = { pkgs, lib, ... }: lib.optionalAttrs pkgs.stdenv.isLinux {
+  perSystem = { pkgs, lib, ... }: lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
     packages.myNoctalia = inputs.wrapper-modules.wrappers.noctalia-shell.wrap {
       inherit pkgs;
       settings = {}; # Start with defaults, export later via IPC
@@ -413,9 +413,9 @@ The `modules/features/git/` directory contains sanitized git config files (emplo
   flake.homeModules.scripts = { pkgs, lib, config, ... }: {
     home.sessionPath = [
       "${config.xdg.configHome}/scripts/shared"
-    ] ++ lib.optionals pkgs.stdenv.isLinux [
+    ] ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
       "${config.xdg.configHome}/scripts/linux"
-    ] ++ lib.optionals pkgs.stdenv.isDarwin [
+    ] ++ lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
       "${config.xdg.configHome}/scripts/darwin"
     ];
 

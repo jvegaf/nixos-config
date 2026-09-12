@@ -9,7 +9,7 @@
 
   flake.homeModules.onepassword =
     { pkgs, lib, ... }:
-    lib.mkIf pkgs.stdenv.isLinux {
+    lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
       systemd.user.services.onepassword = {
         Unit.Description = "1Password";
         Unit.After = [ "graphical-session.target" ];

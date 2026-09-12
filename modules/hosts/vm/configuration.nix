@@ -11,7 +11,6 @@
         self.nixosModules.vm-hardware
         self.nixosModules.desktop
         self.nixosModules.home
-        self.nixosModules.podman
       ];
 
       networking.hostName = "vm";
@@ -24,9 +23,11 @@
 
       virtualisation.vmVariant = {
         virtualisation = {
-          memorySize = 4096;
+          # memorySize = 4096;
+          memorySize = 8192;
           diskSize = 20480;
-          cores = 4;
+          # cores = 4;
+          cores = 8;
           graphics = true;
           qemu.options = [
             "-device virtio-vga"

@@ -1,5 +1,5 @@
 { self, inputs, ... }: {
-  flake.homeModules.foot = { pkgs, lib, ... }: lib.mkIf pkgs.stdenv.isLinux {
+  flake.homeModules.foot = { pkgs, lib, ... }: lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
     home.packages = [
       self.packages.${pkgs.stdenv.hostPlatform.system}.foot
     ];

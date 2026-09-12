@@ -2,9 +2,9 @@
   flake.homeModules.scripts = { pkgs, lib, config, ... }: {
     home.sessionPath = [
       "${config.xdg.configHome}/scripts/shared"
-    ] ++ lib.optionals pkgs.stdenv.isLinux [
+    ] ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
       "${config.xdg.configHome}/scripts/linux"
-    ] ++ lib.optionals pkgs.stdenv.isDarwin [
+    ] ++ lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
       "${config.xdg.configHome}/scripts/darwin"
     ];
 

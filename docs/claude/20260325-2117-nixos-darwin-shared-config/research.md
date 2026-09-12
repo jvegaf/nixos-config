@@ -314,7 +314,7 @@ inputs = {
 
 1. **`inherit pkgs;` is required** when using wrapper-modules — the video author explicitly flagged this as a mistake in the video
 2. **Niri and Noctalia are Linux-only** — the macOS host cannot use them; it needs a separate window management solution (or none)
-3. **`perSystem` packages are platform-aware** — `pkgs.stdenv.hostPlatform.system` determines the platform, so Linux-only packages in `perSystem` need guards (e.g., `lib.optionalAttrs pkgs.stdenv.isLinux`)
+3. **`perSystem` packages are platform-aware** — `pkgs.stdenv.hostPlatform.system` determines the platform, so Linux-only packages in `perSystem` need guards (e.g., `lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux`)
 4. **Noctalia requires nixpkgs unstable** for the latest Quickshell package
 5. **Binary caches** — both Niri and Noctalia provide cachix caches to avoid long builds: `niri.cachix.org`, `noctalia.cachix.org`
 6. **Noctalia settings export** — `noctalia-shell ipc call state all` requires a running Noctalia instance; initial config may need a bootstrap step

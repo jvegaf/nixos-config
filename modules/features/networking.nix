@@ -5,6 +5,6 @@
 
     services.resolved.enable = true;
 
-    environment.systemPackages = [ pkgs.protonvpn-gui ];
+    # environment.systemPackages = [ pkgs.protonvpn-gui ];
   };
 }

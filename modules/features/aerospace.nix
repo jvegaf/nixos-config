@@ -4,7 +4,7 @@
     # Config is placed via home-manager
   };
 
-  flake.homeModules.aerospace = { pkgs, lib, ... }: lib.mkIf pkgs.stdenv.isDarwin {
+  flake.homeModules.aerospace = { pkgs, lib, ... }: lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
     xdg.configFile."aerospace" = {
       source = ./aerospace;
       recursive = true;
