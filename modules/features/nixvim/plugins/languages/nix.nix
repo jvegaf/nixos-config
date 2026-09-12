@@ -17,7 +17,10 @@
   flake.modules.homeManager.base =
     { pkgs, ... }:
     {
-      home.packages = [ pkgs.nixfmt ];
+      home.packages = with pkgs; [
+        alejandra
+        nixfmt
+      ];
       programs.git.ignores = [
         "result"
         "result/*"

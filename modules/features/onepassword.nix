@@ -5,6 +5,16 @@
       enable = true;
       polkitPolicyOwners = [ "th3g3ntl3man" ];
     };
+
+    environment.etc = {
+      "1password/custom_allowed_browsers" = {
+        text = ''
+          firefox
+          chromium
+        '';
+        mode = "0755";
+      };
+    };
   };
 
   flake.homeModules.onepassword =

@@ -1,5 +1,6 @@
 { self, inputs, ... }: {
   flake.nixosModules.user-thg = { pkgs, ... }: {
+    programs.zsh.enable = true;
     users.users.th3g3ntl3man = {
       isNormalUser = true;
       extraGroups = [
@@ -9,7 +10,7 @@
         "audio"
         "input"
       ];
-      shell = pkgs.bash;
+      shell = pkgs.zsh;
     };
   };
 

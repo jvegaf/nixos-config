@@ -32,7 +32,7 @@
           input = {
             keyboard.xkb = {
               layout = "us";
-              options = "ctrl:nocaps";
+              # options = "ctrl:nocaps";
             };
 
             touchpad = {
@@ -70,7 +70,8 @@
 
           binds = {
             # Terminal (Shift+Return like sway)
-            "Mod+Return".spawn = lib.getExe pkgs.wezterm;
+            # "Mod+Return".spawn = lib.getExe pkgs.wezterm;
+            "Mod+Return".spawn = lib.getExe pkgs.kitty;
 
             # Editor (Return like sway)
             # "Mod+Return".spawn-sh = "${lib.getExe pkgs.wezterm} start -- bash -l -c nvim";
@@ -88,10 +89,10 @@
             "Mod+Z".fullscreen-window = _: { };
 
             # Maximize column (closest sway equivalent)
-            "Mod+F".maximize-column = _: { };
+            "Mod+A".maximize-column = _: { };
 
             # Toggle floating
-            "Mod+Shift+F".toggle-window-floating = _: { };
+            "Mod+F".toggle-window-floating = _: { };
 
             # Center column
             "Mod+C".center-column = _: { };
