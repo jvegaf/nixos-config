@@ -4,15 +4,15 @@
       self.nixosModules.bespin-hardware
       self.nixosModules.desktop
       self.nixosModules.home
-      self.nixosModules.podman
+      # self.nixosModules.podman
     ];
 
     networking.hostName = "bespin";
     system.stateVersion = "25.05";
 
-    home-manager.users.th3g3ntl3man = {
-      custom.senpai.enable = true;
-    };
+    # home-manager.users.th3g3ntl3man = {
+    #   custom.senpai.enable = true;
+    # };
 
     # Laptop power management (tlp conflicts with power-profiles-daemon from shared nixos module)
     services.power-profiles-daemon.enable = false;

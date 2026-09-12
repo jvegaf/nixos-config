@@ -1,20 +1,27 @@
 { self, inputs, ... }: {
-  flake.nixosModules.endor-configuration = { pkgs, lib, config, ... }: {
-    imports = [
-      self.nixosModules.endor-hardware
-      self.nixosModules.desktop
-      self.nixosModules.home
-      self.nixosModules.amdgpu
-      self.nixosModules.bluetooth
-      self.nixosModules.gaming
-      self.nixosModules.podman
-    ];
+  flake.nixosModules.endor-configuration =
+    {
+      pkgs,
+      lib,
+      config,
+      ...
+    }:
+    {
+      imports = [
+        self.nixosModules.endor-hardware
+        self.nixosModules.desktop
+        self.nixosModules.home
+        # self.nixosModules.amdgpu
+        # self.nixosModules.bluetooth
+        # self.nixosModules.gaming
+        # self.nixosModules.podman
+      ];
 
-    networking.hostName = "endor";
-    system.stateVersion = "25.05";
+      networking.hostName = "endor";
+      system.stateVersion = "25.05";
 
-    home-manager.users.th3g3ntl3man = {
-      custom.senpai.enable = true;
+      # home-manager.users.th3g3ntl3man = {
+      #   custom.senpai.enable = true;
+      # };
     };
-  };
 }
