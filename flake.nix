@@ -53,12 +53,17 @@
     nixvim.inputs.flake-parts.follows = "flake-parts";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
-    # llm-agents.url = "github:numtide/llm-agents.nix";
-    #
-    # superpowers = {
-    #   url = "github:obra/superpowers";
-    #   flake = false;
-    # };
+    llm-agents.url = "github:numtide/llm-agents.nix";
+
+    superpowers = {
+      url = "github:obra/superpowers";
+      flake = false;
+    };
+
+    matt-pocock-skills = {
+      url = "github:mattpocock/skills";
+      flake = false;
+    };
   };
 
   outputs = inputs:
