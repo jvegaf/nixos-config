@@ -16,7 +16,7 @@ does not configure `programs.opencode` separately.
 The wrapper generates an immutable configuration directory containing:
 
 - OpenCode JSON settings, including plugins, permissions, and LSP definitions.
-- Generated local commands and agents.
+- Local commands and agents in OpenCode's native Markdown layout.
 - The local skill tree and `AGENTS.md` context.
 - `superpowers` skills under `skills/superpowers`.
 - All Matt Pocock skills under `skills/matt-pocock/engineering` and

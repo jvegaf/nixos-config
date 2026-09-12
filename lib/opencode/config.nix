@@ -5,13 +5,6 @@
 }:
 let
   aiTools = ./ai-tools;
-  commandFiles = (import (aiTools + "/commands.nix") { inherit lib; }).toOpenCodeMarkdown;
-  agentFiles = (import (aiTools + "/agents.nix") { inherit lib; }).toOpenCodeMarkdown;
-
-  textFile = name: content: {
-    inherit name;
-    path = pkgs.writeText (lib.replaceStrings [ "/" ] [ "-" ] name) content;
-  };
 
   treeEntries = root: prefix:
     lib.concatLists (
@@ -25,12 +18,12 @@ let
       ) (builtins.readDir root)
     );
 
-  generatedFiles =
-    lib.mapAttrsToList (name: content: textFile "commands/${name}.md" content) commandFiles
-    ++ lib.mapAttrsToList (name: content: textFile "agents/${name}.md" content) agentFiles
-    ++ [
-      (textFile "AGENTS.md" (builtins.readFile (aiTools + "/base.md")))
-    ];
+  generatedFiles = [
+    {
+      name = "AGENTS.md";
+      path = pkgs.writeText "opencode-agents" (builtins.readFile (aiTools + "/base.md"));
+    }
+  ];
 in
 pkgs.linkFarm "opencode-config" (
   generatedFiles
@@ -40,6 +33,8 @@ pkgs.linkFarm "opencode-config" (
       path = pkgs.writeText "opencode-skills-keep" "";
     }
   ]
+  ++ treeEntries (aiTools + "/commands") "commands"
+  ++ treeEntries (aiTools + "/agents") "agents"
   ++ treeEntries (aiTools + "/skills") "skills"
   ++ treeEntries (inputs.superpowers + "/skills") "skills/superpowers"
   ++ treeEntries (inputs.matt-pocock-skills + "/skills/engineering") "skills/matt-pocock/engineering"
