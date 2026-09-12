@@ -61,5 +61,11 @@
     # };
   };
 
-  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [
+        inputs.disko.flakeModules.default
+        (inputs.import-tree ./modules)
+      ];
+    };
 }

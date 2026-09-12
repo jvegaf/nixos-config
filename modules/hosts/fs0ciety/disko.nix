@@ -1,5 +1,6 @@
+{ ... }:
 {
-  flake.diskoConfigurations.hostFs0ciety = {
+  flake.diskoConfigurations.fs0ciety = {
     disko.devices = {
       disk.main = {
         device = "/dev/disk/by-id/nvme-SAMSUNG_MZVLW256HEHP-00000_S33VNX0JC31966";

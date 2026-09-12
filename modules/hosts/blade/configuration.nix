@@ -3,12 +3,11 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 { self, ... }: {
   flake.nixosModules.blade-configuration =
-    {
-      config,
-      inputs,
-      pkgs,
-      lib,
-      ...
+    { config
+    , inputs
+    , pkgs
+    , lib
+    , ...
     }:
     {
       imports = [
@@ -16,12 +15,13 @@
         inputs.razerdaemon.nixosModules.default
         (inputs.hardware + "/common/cpu/intel")
         (inputs.hardware + "/common/gpu/intel/comet-lake")
-        self.nixosModules.diskoBlade
         self.nixosModules.desktop
         self.nixosModules.home
       ];
 
       networking.hostName = "razer-blade";
+      boot.loader.systemd-boot.enable = true;
+      boot.loader.efi.canTouchEfiVariables = true;
       nixpkgs.config.allowUnfree = true;
       # programs.creality-print.enable = true;
 
