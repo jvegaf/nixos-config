@@ -22,6 +22,7 @@
         hyperfine
         ijq
         jq
+        lazygit
         less
         lnav
         mpv

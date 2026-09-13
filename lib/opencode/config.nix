@@ -37,6 +37,6 @@ pkgs.linkFarm "opencode-config" (
   ++ treeEntries (aiTools + "/agents") "agents"
   ++ treeEntries (aiTools + "/skills") "skills"
   ++ treeEntries (inputs.superpowers + "/skills") "skills/superpowers"
-  ++ treeEntries (inputs.matt-pocock-skills + "/skills/engineering") "skills/matt-pocock/engineering"
-  ++ treeEntries (inputs.matt-pocock-skills + "/skills/productivity") "skills/matt-pocock/productivity"
+  # ++ treeEntries (inputs.matt-pocock-skills + "/skills/engineering") "skills/matt-pocock/engineering"
+  # ++ treeEntries (inputs.matt-pocock-skills + "/skills/productivity") "skills/matt-pocock/productivity"
 )

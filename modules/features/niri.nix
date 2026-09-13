@@ -182,6 +182,10 @@
           # Window rules (floating apps from sway)
           window-rules = [
             {
+                geometry-corner-radius = 12;
+                clip-to-geometry = true;
+            }
+            {
               matches = [ { app-id = "1Password"; } ];
               open-floating = true;
             }
