@@ -34,7 +34,7 @@
     };
 
     # nur.url = "github:nix-community/NUR";
-    # yazi.url = "github:sxyazi/yazi";
+    yazi.url = "github:sxyazi/yazi";
     hardware.url = "github:NixOS/nixos-hardware/master";
     razerdaemon.url = "github:encomjp/razer-control-revived";
     razerdaemon.inputs.nixpkgs.follows = "nixpkgs";

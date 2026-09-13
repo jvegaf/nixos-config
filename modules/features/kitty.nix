@@ -4,6 +4,13 @@
   ...
 }:
 {
+  flake.homeModules.kitty = { pkgs, lib, ...}: {
+    home.packages = [
+      self.packages.${pkgs.stdenv.hostPlatform.system}.kitty
+    ];
+  };
+
+
   flake.wrappersModules.kitty =
     {
       config,

@@ -71,13 +71,14 @@
           binds = {
             # Terminal (Shift+Return like sway)
             # "Mod+Return".spawn = lib.getExe pkgs.wezterm;
-            "Mod+Return".spawn = lib.getExe pkgs.kitty;
+            "Mod+Return".spawn = lib.getExe self'.packages.kitty;
 
-            # Editor (Return like sway)
-            # "Mod+Return".spawn-sh = "${lib.getExe pkgs.wezterm} start -- bash -l -c nvim";
+            "Mod+B".spawn = "firefox";
 
             # Kill focused window
             "Mod+Q".close-window = _: { };
+
+            "Mod+W".toggle-overview = _: { };
 
             # Launcher (noctalia)
             "Mod+Space".spawn-sh = "${lib.getExe self'.packages.noctalia} ipc call launcher toggle";
@@ -87,6 +88,8 @@
 
             # Fullscreen
             "Mod+Z".fullscreen-window = _: { };
+
+            "Mod+Shift+H".show-hotkey-overlay =_ : { };
 
             # Maximize column (closest sway equivalent)
             "Mod+A".maximize-column = _: { };
@@ -102,12 +105,16 @@
             "Mod+J".focus-window-down = _: { };
             "Mod+K".focus-window-up = _: { };
             "Mod+L".focus-column-right = _: { };
+            "Mod+Left".focus-column-left = _: { };
+            "Mod+Down".focus-window-down = _: { };
+            "Mod+Up".focus-window-up = _: { };
+            "Mod+Right".focus-column-right = _: { };
 
             # Move windows (Shift+hjkl like sway)
-            "Mod+Shift+H".move-column-left = _: { };
-            "Mod+Shift+J".move-window-down = _: { };
-            "Mod+Shift+K".move-window-up = _: { };
-            "Mod+Shift+L".move-column-right = _: { };
+            "Mod+Shift+Left".move-column-left = _: { };
+            "Mod+Shift+Down".move-window-down = _: { };
+            "Mod+Shift+Up".move-window-up = _: { };
+            "Mod+Shift+Right".move-column-right = _: { };
 
             # Resize (Ctrl+hjkl)
             "Mod+Ctrl+H".set-column-width = "-5%";
@@ -167,9 +174,9 @@
             # Lock (noctalia)
             "Mod+Shift+Space".spawn-sh = "${lib.getExe self'.packages.noctalia} ipc call lockScreen lock";
 
-            # Scratchpads (from sway config)
-            "Mod+S".spawn-sh = "$HOME/.config/scripts/shared/scratchpad";
-            "Mod+W".spawn-sh = "$HOME/.config/scripts/shared/notepad";
+            "CTRL+ALT+Delete".quit = { };
+
+            "Mod+S".spawn-sh = "${lib.getExe self'.packages.noctalia} ipc call settings";
           };
 
           # Window rules (floating apps from sway)
