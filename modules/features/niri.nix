@@ -12,6 +12,8 @@
       slurp
       brightnessctl
       playerctl
+      nautilus
+      sushi
     ];
   };
 
@@ -74,6 +76,8 @@
             "Mod+Return".spawn = lib.getExe self'.packages.kitty;
 
             "Mod+B".spawn = "firefox";
+
+            "Mod+e".spawn = "nautilus";
 
             # Kill focused window
             "Mod+Q".close-window = _: { };
@@ -190,7 +194,7 @@
               open-floating = true;
             }
             {
-              matches = [ { app-id = "thunar"; } ];
+              matches = [ { app-id = "nautilus"; } ];
               open-floating = true;
             }
             {
