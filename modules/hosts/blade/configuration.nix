@@ -17,6 +17,7 @@
         (inputs.hardware + "/common/gpu/intel/comet-lake")
         self.nixosModules.desktop
         self.nixosModules.home
+        self.nixosModules.agents
       ];
 
       networking.hostName = "razer-blade";
