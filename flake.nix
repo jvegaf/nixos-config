@@ -38,32 +38,14 @@
     hardware.url = "github:NixOS/nixos-hardware/master";
     razerdaemon.url = "github:encomjp/razer-control-revived";
     razerdaemon.inputs.nixpkgs.follows = "nixpkgs";
-    # mangowm.url = "github:mangowm/mango";
-    # mangowm.inputs.nixpkgs.follows = "nixpkgs";
-    # voxtype.url = "github:peteonrails/voxtype";
-    # dms = {
-    #   url = "github:AvengeMedia/DankMaterialShell/stable";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    # dms-plugin-registry = {
-    #   url = "github:AvengeMedia/dms-plugin-registry";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.flake-parts.follows = "flake-parts";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     llm-agents.url = "github:numtide/llm-agents.nix";
+    gentle-ai-nix.url = "github:0xErwin1/gentle-ai-nix";
+    gentle-ai-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    superpowers = {
-      url = "github:obra/superpowers";
-      flake = false;
-    };
-
-    matt-pocock-skills = {
-      url = "github:mattpocock/skills";
-      flake = false;
-    };
   };
 
   outputs = inputs:
