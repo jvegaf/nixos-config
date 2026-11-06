@@ -43,7 +43,7 @@
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     niri-nix.url = "git+https://codeberg.org/BANanaD3V/niri-nix";
-    niri-nix.inputs.follows = "nixpkgs";
+    niri-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     llm-agents.url = "github:numtide/llm-agents.nix";
     gentle-ai-nix.url = "github:0xErwin1/gentle-ai-nix";

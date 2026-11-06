@@ -5,7 +5,7 @@
       self.nixosModules.networking
       self.nixosModules.fonts
       self.nixosModules.niri
-      self.nixosModules.noctalia
+      self.nixosModules.agents
       # self.nixosModules.printing
     ];
   };
