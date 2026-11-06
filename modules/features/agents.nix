@@ -2,7 +2,7 @@
   flake.nixosModules.agents = { pkgs, lib, ... }: {
     environment.systemPackages = with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
         opencode
-        pi
+        # pi
         # claude-plugins
         # skills
         # skills-installer
@@ -241,12 +241,6 @@
       communityTools.codegraph.enable = true;
 
       persona = "Gentleman";
-
-      # TODO: add opencode plugins
-      # "plugin": [
-      #   "@mohak34/opencode-notifier@latest",
-      #   "@tarquinen/opencode-smart-title"
-      # ]
     };
 
   };
