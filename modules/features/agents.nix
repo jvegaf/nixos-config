@@ -1,16 +1,16 @@
 { self, inputs, ... }: {
-  flake.nixosModules.agents = { pkgs, lib, ... }: {
-    environment.systemPackages = with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
-        opencode
-        # pi
-        # claude-plugins
-        # skills
-        # skills-installer
-        # plannotator
-        # workmux
-        # ... other tools
-      ];
-  };
+  # flake.nixosModules.agents = { pkgs, lib, ... }: {
+  #   environment.systemPackages = with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
+  #       opencode
+  #       # pi
+  #       # claude-plugins
+  #       # skills
+  #       # skills-installer
+  #       # plannotator
+  #       # workmux
+  #       # ... other tools
+  #     ];
+  # };
 
   flake.homeModules.agents = { pkgs, lib, ...}:
   let
@@ -65,10 +65,10 @@
       enable = true;
 
       providers = {
-        opencode = {
-          enable = true;
-          mcpServers = sharedServers;
-        };
+        # opencode = {
+        #   enable = true;
+        #   mcpServers = sharedServers;
+        # };
 
         # Pi keeps its harness in packages its own tool installs rather than in
         # files, so rendering produces the configuration around it and activation
