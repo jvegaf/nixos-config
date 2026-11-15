@@ -5,10 +5,7 @@
       [
         bandwhich
         btop
-        claude-code
         csvlens
-        curlie
-        doggo
         fastfetch
         fd
         fx
