@@ -60,6 +60,10 @@
         lm_sensors
       ];
 
+      environment.shellAliases = {
+        freb = "sudo nixos-rebuild switch --flake .#fs0ciety --log-format internal-json -v |& nom --json";
+      };
+
       home-manager.users.th3g3ntl3man = {
         custom.orcaslicer.enable = true;
       };

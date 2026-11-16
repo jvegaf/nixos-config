@@ -1,6 +1,5 @@
 {
- flake.homeModules.zsh =
-  { config, pkgs, ... }: {
+  flake.homeModules.zsh = { config, pkgs, ... }: {
     programs.zsh = {
       enable = true;
       enableCompletion = true;
@@ -43,7 +42,7 @@
           y = "yazi";
           b = "bat";
           rmd = "rm -rf";
-          dots = "cd ~/nixdots";
+          dots = "cd ~/nixos-config";
           doc = "cd ~/Documents";
           dw = "cd ~/Downloads";
           dt = "cd ~/Desktop";
@@ -56,7 +55,6 @@
           bt = "btop";
           jctl = "journalctl -p 3 -xb";
           lzd = "lazydocker";
-          edalias = "nvim ~/nixdots/modules/home/shell/zsh.nix";
 
           gb = "nix-collect-garbage -d";
           clean = "nh clean all --keep 3";
@@ -90,8 +88,8 @@
       '';
     };
 
-      home.packages = with pkgs; [
-        eza
-      ];
+    home.packages = with pkgs; [
+      eza
+    ];
   };
 }
