@@ -5,6 +5,7 @@
   perSystem =
     { pkgs, ... }:
     {
-      packages.creality-print = pkgs.callPackage ./creality-print.nix { };
+      packages.creality-print = pkgs.callPackage ./_creality-print.nix { };
+      packages.flatcam = pkgs.callPackage ./_flatcam.nix { };
     };
 }
