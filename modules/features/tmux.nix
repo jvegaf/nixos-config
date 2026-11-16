@@ -1,7 +1,20 @@
 {
+  self,
   ...
 }:
 {
+
+  flake.homeModules.tmux = { pkgs, lib, ... }: {
+    home.packages = [
+      self.packages.${pkgs.stdenv.hostPlatform.system}.tmux
+    ];
+
+
+    home.shellAliases = {
+      mx = "tmux";
+    };
+  };
+
   flake.wrappers.tmux =
     {
       wlib,
@@ -11,7 +24,7 @@
     {
       imports = [ wlib.wrapperModules.tmux ];
 
-      prefix = "M-a";
+      prefix = "C-a";
       terminal = "tmux-256color";
       modeKeys = "vi";
       statusKeys = "vi";
