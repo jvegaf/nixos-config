@@ -81,7 +81,7 @@
         #   tmux attach-session -t default || tmux new-session -s default
         # fi
         export PATH="$PATH:/home/th3g3ntl3man/.local/bin"
-        fastfetch
+        # fastfetch
 
         # Start UWSM
         # if uwsm check may-start > /dev/null && uwsm select; then
