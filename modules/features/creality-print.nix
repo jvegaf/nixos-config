@@ -1,7 +1,7 @@
-{ ... }: {
+{ self, ... }: {
   flake.homeModules.creality-print = { pkgs, ... }: {
     home.packages = [
-      pkgs.creality-print
+      self.packages.${pkgs.stdenv.hostPlatform.system}.creality-print
     ];
   };
 }

@@ -3,11 +3,12 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 { self, ... }: {
   flake.nixosModules.blade-configuration =
-    { config
-    , inputs
-    , pkgs
-    , lib
-    , ...
+    {
+      config,
+      inputs,
+      pkgs,
+      lib,
+      ...
     }:
     {
       imports = [
@@ -17,7 +18,6 @@
         (inputs.hardware + "/common/gpu/intel/comet-lake")
         self.nixosModules.desktop
         self.nixosModules.home
-        self.nixosModules.agents
       ];
 
       networking.hostName = "razer-blade";
