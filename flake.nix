@@ -1,5 +1,5 @@
 {
-  description = "Cross-platform NixOS/nix-darwin configuration";
+  description = "Cross-platform NixOS configuration";
 
   nixConfig = {
     trusted-substituters = [
@@ -22,10 +22,6 @@
     wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nix-darwin = {
-      url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sops-nix = {

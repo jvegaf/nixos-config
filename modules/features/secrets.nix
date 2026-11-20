@@ -8,18 +8,6 @@
     };
   };
 
-  flake.darwinModules.secrets = { config, ... }: let
-    primaryUser = builtins.head (builtins.attrNames (
-      builtins.removeAttrs config.users.users [ "root" "nobody" "daemon" ]
-    ));
-    home = config.users.users.${primaryUser}.home;
-  in {
-    sops = {
-      defaultSopsFormat = "yaml";
-      age.keyFile = "${home}/.config/sops/age/keys.txt";
-    };
-  };
-
   flake.homeModules.secrets = { config, ... }: {
     sops = {
       defaultSopsFile = ../../secrets/home.yaml;

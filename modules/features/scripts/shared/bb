@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-set -e
-set -u
-set -o pipefail
-
-nohup "$@" >/dev/null 2>&1 &

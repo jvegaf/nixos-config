@@ -54,6 +54,12 @@
         };
       };
 
+      services.logind.settings.Login = {
+        HandleLidSwitch = "ignore";
+        HandleLidSwitchExternalPower = "ignore";
+        HandleLidSwitchDocked = "ignore";
+      };
+
       environment.systemPackages = with pkgs; [
         nvtopPackages.full
         mesa-demos
