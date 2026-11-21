@@ -5,7 +5,7 @@
     home.file."Pictures/Wallpapers/nixdots-wallpapers".source = ./wallpapers;
 
     programs.noctalia = {
-      enable = true;
+      enable = false;
       settings = builtins.readFile ./config.toml;
       systemd.enable = true;
     };

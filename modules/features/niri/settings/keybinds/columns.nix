@@ -12,8 +12,6 @@
       "Mod+End".focus-column-last = [ ];
 
       # Move Columns
-      "Mod+C".center-column = [ ];
-      "Mod+Ctrl+C".center-visible-columns = [ ];
       "Mod+Shift+Left".move-column-left = [ ];
       "Mod+Shift+Right".move-column-right = [ ];
       "Mod+Shift+Down".move-window-down = [ ];

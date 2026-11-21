@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "dank-qml-common": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1795211080,
+        "narHash": "sha256-PV5cT7st/9ioV5aHeNP0go7wFfHlKfBYVVRCQ8JkHXg=",
+        "owner": "duxlabs-dev",
+        "repo": "dux-qml-common",
+        "rev": "12f5e4457e0ca14b6a5f9a283ab581ce28c92855",
+        "type": "github"
+      },
+      "original": {
+        "owner": "duxlabs-dev",
+        "repo": "dux-qml-common",
+        "type": "github"
+      }
+    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -17,6 +33,86 @@
       "original": {
         "owner": "nix-community",
         "repo": "disko",
+        "type": "github"
+      }
+    },
+    "dms": {
+      "inputs": {
+        "dank-qml-common": "dank-qml-common",
+        "dux-qt-base": "dux-qt-base",
+        "flake-compat": "flake-compat",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795211114,
+        "narHash": "sha256-Xi9xMPvU7t7+SarYrWNLpGHH4ekUfCiHUPVHXAvITjU=",
+        "owner": "duxlabs-dev",
+        "repo": "dux-shell",
+        "rev": "0a103729c011e5bdbb2e09a3e9054665d7f6b9c2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "duxlabs-dev",
+        "repo": "dux-shell",
+        "type": "github"
+      }
+    },
+    "dms-plugin-registry": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795186823,
+        "narHash": "sha256-rhMDv1TYc6HK/HTo57yY/6/k44Zeu2BZ9dKaRE8oSHs=",
+        "owner": "duxlabs-dev",
+        "repo": "dux-plugin-registry",
+        "rev": "d42cc7377fdc78c928ffde47218230e4a75824fc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "duxlabs-dev",
+        "repo": "dux-plugin-registry",
+        "type": "github"
+      }
+    },
+    "dux-qt-base": {
+      "inputs": {
+        "nixpkgs": [
+          "dms",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795139910,
+        "narHash": "sha256-JxBwcoR86CfjT92/xQSbbaHn1OxddwtH/iF+u4fUvRw=",
+        "owner": "duxlabs-dev",
+        "repo": "dux-qt-base",
+        "rev": "75d4524dc5e678ca4b64a1f862dd7509ca6852b1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "duxlabs-dev",
+        "repo": "dux-qt-base",
+        "type": "github"
+      }
+    },
+    "flake-compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1767039857,
+        "narHash": "sha256-vNpUSpF5Nuw8xvDLj2KCwwksIbjua2LZCqhV1LNRDns=",
+        "owner": "NixOS",
+        "repo": "flake-compat",
+        "rev": "5edf11c44bc78a0d334f6334cdaf7d60d732daab",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "flake-compat",
         "type": "github"
       }
     },
@@ -328,6 +424,8 @@
     "root": {
       "inputs": {
         "disko": "disko",
+        "dms": "dms",
+        "dms-plugin-registry": "dms-plugin-registry",
         "flake-parts": "flake-parts",
         "gentle-ai-nix": "gentle-ai-nix",
         "hardware": "hardware",

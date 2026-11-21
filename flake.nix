@@ -43,6 +43,10 @@
     disko.inputs.nixpkgs.follows = "nixpkgs";
     niri-nix.url = "git+https://codeberg.org/BANanaD3V/niri-nix";
     niri-nix.inputs.nixpkgs.follows = "nixpkgs";
+    dms.url = "github:duxlabs-dev/dux-shell";
+    dms.inputs.nixpkgs.follows = "nixpkgs";
+    dms-plugin-registry.url = "github:duxlabs-dev/dux-plugin-registry";
+    dms-plugin-registry.inputs.nixpkgs.follows = "nixpkgs";
 
     # llm-agents.url = "github:numtide/llm-agents.nix";
     gentle-ai-nix.url = "github:0xErwin1/gentle-ai-nix";

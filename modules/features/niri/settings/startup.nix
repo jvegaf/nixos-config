@@ -4,7 +4,7 @@
       hotkey-overlay.skip-at-startup = true;
 
       spawn-at-startup = [
-        { _args = [ "noctalia" ]; }
+        # { _args = [ "noctalia" ]; }
       ];
     };
   };
