@@ -7,7 +7,7 @@
         (inputs.hardware + "/common/cpu/intel")
         (inputs.hardware + "/common/gpu/intel/kaby-lake")
         self.nixosModules.fs0ciety-hardware
-        self.nixosModules.desktop
+        self.nixosModules.server
         self.nixosModules.home
       ];
 
@@ -41,19 +41,6 @@
       services.xserver.videoDrivers = [ "nvidia" ];
       services.libinput.enable = true;
 
-      services.openssh = {
-        enable = true;
-        openFirewall = true;
-        settings = {
-          PasswordAuthentication = true;
-          # KbdInteractiveAuthentication = false;
-          PermitRootLogin = "no";
-          AllowUsers = [ "th3g3ntl3man" ];
-          MaxAuthTries = 3;
-          # PerSourcePenalties = "crash:3600s authfail:3600s max:86400s";
-        };
-      };
-
       services.logind.settings.Login = {
         HandleLidSwitch = "ignore";
         HandleLidSwitchExternalPower = "ignore";
@@ -67,11 +54,16 @@
       ];
 
       environment.shellAliases = {
-        freb = "sudo nixos-rebuild switch --flake .#fs0ciety --log-format internal-json -v |& nom --json";
+        freb = "nh os switch";
       };
 
       home-manager.users.th3g3ntl3man = {
-        custom.orcaslicer.enable = true;
+        custom = {
+          orcaslicer.enable = false;
+          flatcam.enable = false;
+          creality-print.enable = false;
+          gentle-ai.enable = true;
+        };
       };
 
       system.stateVersion = "26.05";

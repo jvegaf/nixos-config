@@ -17,7 +17,7 @@
         imports = builtins.attrValues (self.homeModules or { }) ++ [
           inputs.sops-nix.homeManagerModules.sops
         ];
-        home.stateVersion = "25.05";
+        home.stateVersion = "26.05";
       };
     };
   };
