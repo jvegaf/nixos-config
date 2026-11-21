@@ -83,6 +83,7 @@
       splitbelow = true; # Put new windows below current
       splitkeep = "screen";
       splitright = true; # Put new windows right of current
+      swapfile = false;
       tabstop = 2; # Number of spaces tabs count for
       termguicolors = true; # True color support
       timeoutlen = 300;

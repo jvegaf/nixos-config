@@ -380,6 +380,7 @@
     {
       action = "V";
       key = "vv";
+      mode = "n";
     }
     {
       action = "<ESC>";
@@ -390,6 +391,11 @@
       action = "<ESC>";
       key = "jj";
       mode = "i";
+    }
+    {
+      action = "\"_dP";
+      key = "p";
+      mode = "v";
     }
   ];
 }
