@@ -9,7 +9,6 @@
       self.packages.${pkgs.stdenv.hostPlatform.system}.tmux
     ];
 
-
     home.shellAliases = {
       mx = "tmux";
     };
@@ -32,6 +31,8 @@
       disableConfirmationPrompt = false;
 
       plugins = with pkgs.tmuxPlugins; [
+        gruvbox
+        yank
         {
           plugin = vim-tmux-navigator;
           configBefore = ''
@@ -76,6 +77,19 @@
             set -g status-right '%Y-%m-%d %H:%M #{tmux_mode_indicator}'
           '';
         }
+        {
+          plugin = resurrect;
+          configBefore = ''
+            set -g @resurrect-strategy-nvim 'session'
+          '';
+        }
+        {
+          plugin = continuum;
+          configBefore = ''
+            set -g @continuum-restore 'on'
+            set -g @continuum-save-interval '60' # minutes
+          '';
+        }
       ];
 
       configAfter = ''
@@ -98,12 +112,8 @@
         bind l resize-pane -R 5
         bind h resize-pane -L 5
 
-        bind -r m resize-pane -Z
-
         bind-key -T copy-mode-vi 'v' send -X begin-selection
         bind-key -T copy-mode-vi 'y' send -X copy-selection
-
-        unbind -T copy-mode-vi MouseDragEnd1Pane
 
         set-option -g status-position top
       '';
