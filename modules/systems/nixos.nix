@@ -106,6 +106,8 @@
       sops
       ssh-to-age
       nix-output-monitor
+      inxi
+      lshw
     ];
   };
 }
