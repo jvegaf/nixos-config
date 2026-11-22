@@ -8,6 +8,7 @@
         (inputs.hardware + "/common/gpu/intel/kaby-lake")
         self.nixosModules.fs0ciety-hardware
         self.nixosModules.server
+        self.nixosModules.desktop
         # self.nixosModules.llm-server
         self.nixosModules.home
       ];
