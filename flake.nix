@@ -47,8 +47,11 @@
     dms.inputs.nixpkgs.follows = "nixpkgs";
     dms-plugin-registry.url = "github:duxlabs-dev/dux-plugin-registry";
     dms-plugin-registry.inputs.nixpkgs.follows = "nixpkgs";
-    tmux-which-key.url = "github:TheMasshiro/tmux-which-key";
 
+    tmux-which-key = {
+      url = "github:alexwforsythe/tmux-which-key";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # llm-agents.url = "github:numtide/llm-agents.nix";
     gentle-ai-nix.url = "github:0xErwin1/gentle-ai-nix";
     gentle-ai-nix.inputs.nixpkgs.follows = "nixpkgs";

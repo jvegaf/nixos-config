@@ -1,112 +1,117 @@
 {
   self,
-  inputs,
+  pkgs,
   ...
 }:
+
+let
+  mkTmuxPlugin = pkgs.tmuxPlugins.mkTmuxPlugin;
+
+  tmuxCommandPalette = mkTmuxPlugin {
+    pluginName = "tmux-command-palette";
+    version = "unstable-2026-07-07";
+    rtpFilePath = "init.tmux";
+    src = pkgs.fetchFromGitHub {
+      owner = "lost-melody";
+      repo = "tmux-command-palette";
+      rev = "82a65a8278158f2a84bf1e01f03970bd3f696562";
+      hash = "sha256-MHO/6eU0gNd8sF8yjjcNEGOtmXGMSwql5lahZq3+kNc=";
+    };
+  };
+
+  tmux2k = mkTmuxPlugin {
+    pluginName = "tmux2k";
+    version = "unstable-2026-07-07";
+    rtpFilePath = "2k.tmux";
+    src = pkgs.fetchFromGitHub {
+      owner = "2KAbhishek";
+      repo = "tmux2k";
+      rev = "ce1550aefaccf2cad709b1add64c6c0cf4299092";
+      hash = "sha256-qGe06yNmJ8GYtOwBEU2ZChrWdYXuVDsdE9MEouqzmKc=";
+    };
+  };
+
+  tmuxAutoreload = mkTmuxPlugin {
+    pluginName = "tmux-autoreload";
+    version = "unstable-2026-07-07";
+    rtpFilePath = "tmux-autoreload.tmux";
+    src = pkgs.fetchFromGitHub {
+      owner = "b0o";
+      repo = "tmux-autoreload";
+      rev = "e98aa3b74cfd5f2df2be2b5d4aa4ddcc843b2eba";
+      hash = "sha256-9Rk+VJuDqgsjc+gwlhvX6uxUqpxVD1XJdQcsc5s4pU4=";
+    };
+  };
+
+  tmuxGh = mkTmuxPlugin {
+    pluginName = "tmux-gh";
+    version = "unstable-2026-07-07";
+    rtpFilePath = "tmux_gh.tmux";
+    src = pkgs.fetchFromGitHub {
+      owner = "tardunge";
+      repo = "tmux-gh";
+      rev = "e66c52bc200744b99209ce42bb483aeaa34e04f5";
+      hash = "sha256-7qOIPIiI5c4FsgMzcce/EoYHF2AfeyPS69jTuFf25xU=";
+    };
+  };
+
+  tmuxGentrify = mkTmuxPlugin {
+    pluginName = "tmux-gentrify";
+    version = "unstable-2026-07-07";
+    rtpFilePath = "plugin.tmux";
+    src = pkgs.fetchFromGitHub {
+      owner = "kristopolous";
+      repo = "tmux-gentrify";
+      rev = "46eabde31c6a19ea11f6a6d48e7aa0e8567f13b4";
+      hash = "sha256-iYoz2eqONtVdgO2M8RRrJKWM/JFFqIpI9xuxlXvrUzU=";
+    };
+  };
+
+  tmuxNotify = mkTmuxPlugin {
+    pluginName = "tmux-notify";
+    version = "unstable-2026-07-07";
+    rtpFilePath = "tnotify.tmux";
+    src = pkgs.fetchFromGitHub {
+      owner = "rickstaa";
+      repo = "tmux-notify";
+      rev = "b713320af05837c3b44e4d51167ff3062dbeae4b";
+      hash = "sha256-wOmq2stWXAFmYrRuIqf9IPATYXJ+OFoYXnJdHUnJQxY=";
+    };
+  };
+
+  tmuxCowboy = mkTmuxPlugin {
+    pluginName = "tmux-cowboy";
+    version = "unstable-2026-07-07";
+    rtpFilePath = "cowboy.tmux";
+    src = pkgs.fetchFromGitHub {
+      owner = "tmux-plugins";
+      repo = "tmux-cowboy";
+      rev = "75702b6d0a866769dd14f3896e9d19f7e0acd4f2";
+      hash = "sha256-KJNsdDLqT2Uzc25U4GLSB2O1SA/PThmDj9Aej5XjmJs=";
+    };
+  };
+
+  tmuxTilit = mkTmuxPlugin {
+    pluginName = "tmux-tilit";
+    version = "unstable-2026-07-07";
+    rtpFilePath = "tilit.tmux";
+    src = pkgs.fetchFromGitHub {
+      owner = "2KAbhishek";
+      repo = "tmux-tilit";
+      rev = "c73bd10cb598fae057309b8e4aa058df86d3ce94";
+      hash = "sha256-iG09jgU1CnI4GGoEZtg0Dn+0FfkJN4OyHjpZNfDdci0=";
+    };
+  };
+in
 {
 
   flake.homeModules.tmux =
-    { pkgs, lib, ... }:
-    let
-      mkTmuxPlugin = pkgs.tmuxPlugins.mkTmuxPlugin;
-
-      tmuxCommandPalette = mkTmuxPlugin {
-        pluginName = "tmux-command-palette";
-        version = "unstable-2026-07-07";
-        rtpFilePath = "init.tmux";
-        src = pkgs.fetchFromGitHub {
-          owner = "lost-melody";
-          repo = "tmux-command-palette";
-          rev = "82a65a8278158f2a84bf1e01f03970bd3f696562";
-          hash = "sha256-MHO/6eU0gNd8sF8yjjcNEGOtmXGMSwql5lahZq3+kNc=";
-        };
-      };
-
-      tmux2k = mkTmuxPlugin {
-        pluginName = "tmux2k";
-        version = "unstable-2026-07-07";
-        rtpFilePath = "2k.tmux";
-        src = pkgs.fetchFromGitHub {
-          owner = "2KAbhishek";
-          repo = "tmux2k";
-          rev = "ce1550aefaccf2cad709b1add64c6c0cf4299092";
-          hash = "sha256-qGe06yNmJ8GYtOwBEU2ZChrWdYXuVDsdE9MEouqzmKc=";
-        };
-      };
-
-      tmuxAutoreload = mkTmuxPlugin {
-        pluginName = "tmux-autoreload";
-        version = "unstable-2026-07-07";
-        rtpFilePath = "tmux-autoreload.tmux";
-        src = pkgs.fetchFromGitHub {
-          owner = "b0o";
-          repo = "tmux-autoreload";
-          rev = "e98aa3b74cfd5f2df2be2b5d4aa4ddcc843b2eba";
-          hash = "sha256-9Rk+VJuDqgsjc+gwlhvX6uxUqpxVD1XJdQcsc5s4pU4=";
-        };
-      };
-
-      tmuxGh = mkTmuxPlugin {
-        pluginName = "tmux-gh";
-        version = "unstable-2026-07-07";
-        rtpFilePath = "tmux_gh.tmux";
-        src = pkgs.fetchFromGitHub {
-          owner = "tardunge";
-          repo = "tmux-gh";
-          rev = "e66c52bc200744b99209ce42bb483aeaa34e04f5";
-          hash = "sha256-7qOIPIiI5c4FsgMzcce/EoYHF2AfeyPS69jTuFf25xU=";
-        };
-      };
-
-      tmuxGentrify = mkTmuxPlugin {
-        pluginName = "tmux-gentrify";
-        version = "unstable-2026-07-07";
-        rtpFilePath = "plugin.tmux";
-        src = pkgs.fetchFromGitHub {
-          owner = "kristopolous";
-          repo = "tmux-gentrify";
-          rev = "46eabde31c6a19ea11f6a6d48e7aa0e8567f13b4";
-          hash = "sha256-iYoz2eqONtVdgO2M8RRrJKWM/JFFqIpI9xuxlXvrUzU=";
-        };
-      };
-
-      tmuxNotify = mkTmuxPlugin {
-        pluginName = "tmux-notify";
-        version = "unstable-2026-07-07";
-        rtpFilePath = "tnotify.tmux";
-        src = pkgs.fetchFromGitHub {
-          owner = "rickstaa";
-          repo = "tmux-notify";
-          rev = "b713320af05837c3b44e4d51167ff3062dbeae4b";
-          hash = "sha256-wOmq2stWXAFmYrRuIqf9IPATYXJ+OFoYXnJdHUnJQxY=";
-        };
-      };
-
-      tmuxCowboy = mkTmuxPlugin {
-        pluginName = "tmux-cowboy";
-        version = "unstable-2026-07-07";
-        rtpFilePath = "cowboy.tmux";
-        src = pkgs.fetchFromGitHub {
-          owner = "tmux-plugins";
-          repo = "tmux-cowboy";
-          rev = "75702b6d0a866769dd14f3896e9d19f7e0acd4f2";
-          hash = "sha256-KJNsdDLqT2Uzc25U4GLSB2O1SA/PThmDj9Aej5XjmJs=";
-        };
-      };
-
-      tmuxTilit = mkTmuxPlugin {
-        pluginName = "tmux-tilit";
-        version = "unstable-2026-07-07";
-        rtpFilePath = "tilit.tmux";
-        src = pkgs.fetchFromGitHub {
-          owner = "2KAbhishek";
-          repo = "tmux-tilit";
-          rev = "c73bd10cb598fae057309b8e4aa058df86d3ce94";
-          hash = "sha256-iG09jgU1CnI4GGoEZtg0Dn+0FfkJN4OyHjpZNfDdci0=";
-        };
-      };
-    in
-
+    {
+      pkgs,
+      lib,
+      inputs,
+      ...
+    }:
     {
       imports = [
         inputs.tmux-which-key.homeManagerModules.default
@@ -286,6 +291,38 @@
           tmuxCowboy
 
         ];
+
+        tmux-which-key = {
+          enable = true;
+
+          # The default config only binds `prefix + Space`; `root_table` is
+          # commented out upstream. Extend the default settings to also bind
+          # Ctrl+Space without a prefix.
+          settings =
+            let
+              defaultSettings = import "${inputs.tmux-which-key}/nix/generate-config.nix" {
+                inherit lib pkgs;
+              };
+            in
+            defaultSettings
+            // {
+              keybindings = defaultSettings.keybindings // {
+                root_table = "C-Space";
+              };
+            };
+
+          # The upstream plugin script uses GNU-only `realpath --relative-to`,
+          # which fails with macOS BSD realpath and aborts before loading the
+          # plugin. Patch it to use GNU realpath from coreutils directly.
+          package =
+            inputs.tmux-which-key.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs
+              (old: {
+                postInstall = (old.postInstall or "") + ''
+                  substituteInPlace $out/share/tmux-plugins/tmux-which-key/plugin.sh.tmux \
+                    --replace-fail 'realpath --relative-to' '${pkgs.coreutils}/bin/realpath --relative-to'
+                '';
+              });
+        };
 
         tmux-which-key = {
           enable = true;

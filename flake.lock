@@ -551,15 +551,15 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1795003823,
-        "narHash": "sha256-1WrWfjgB9EOtX9auon2mbCry4V10toMTMzOJ7N1YfOs=",
-        "owner": "TheMasshiro",
+        "lastModified": 1787697164,
+        "narHash": "sha256-duqagS0h9q8kjxdUBOp7TvnHx3svNjLVJq1yV0Khfgw=",
+        "owner": "Nucc",
         "repo": "tmux-which-key",
-        "rev": "c924330677ea9390574c18d413558def14f5c813",
+        "rev": "6c94cccb6d0b2b59aa470b583de69cfe2fc9a67a",
         "type": "github"
       },
       "original": {
-        "owner": "TheMasshiro",
+        "owner": "Nucc",
         "repo": "tmux-which-key",
         "type": "github"
       }
