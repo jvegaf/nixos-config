@@ -23,6 +23,10 @@
           '';
         in
         {
+          sudo = "sudo ";
+          reboot = "sudo reboot";
+          shutdown = "sudo shutdown -h now";
+
           sw = "nh os switch";
           upd = "nh os switch --update";
           hms = "nh home switch";
@@ -47,7 +51,6 @@
           dw = "cd ~/Downloads";
           dt = "cd ~/Desktop";
           cdc = "cd ~/Code";
-          mx = "tmux";
           grep = "grep --color=auto";
           "v." = "(nvim $PWD &>/dev/null &)";
           "o." = "($FILE_MANAGER $PWD &>/dev/null &)";
