@@ -49,8 +49,16 @@
                 "g"
                 "n"
               ];
-              run = "cd ~/Nextcloud";
-              desc = "Go to Nextcloud";
+              run = "cd ~/nixos-config";
+              desc = "Go to Nixos Config";
+            }
+            {
+              on = [
+                "g"
+                "C"
+              ];
+              run = "cd ~/Code";
+              desc = "Go to Code";
             }
             {
               run = "plugin gvfs -- select-then-mount jump";

@@ -62,7 +62,7 @@
       home-manager.users.th3g3ntl3man = {
         custom = {
           orcaslicer.enable = false;
-          flatcam.enable = false;
+          flatcam.enable = true;
           creality-print.enable = false;
           gentle-ai.enable = true;
         };
