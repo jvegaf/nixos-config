@@ -46,16 +46,22 @@ appimageTools.wrapAppImage {
     export FONTCONFIG_PATH=${contents}/etc/fonts
   '';
 
-  extraPkgs = pkgs: with pkgs; [
-    libxcb
-    libxcb-util
-    libxcb-image
-    libxcb-keysyms
-    libxcb-render-util
-    libxcb-wm
-    libxkbcommon
-    libGL
-  ];
+  extraPkgs =
+    pkgs: with pkgs; [
+      libxcb
+      libxcb-util
+      libxcb-image
+      libxcb-keysyms
+      libxcb-render-util
+      libxcb-wm
+      libxkbcommon
+      libGL
+    ];
+
+  extraInstallCommands = ''
+    install -m 444 -D ${contents}/${pname}.desktop -t $out/share/applications
+    cp -r ${contents}/usr/share/icons $out/share
+  '';
 
   meta = with lib; {
     description = "2-D post processing for PCB fabrication on CNC routers";

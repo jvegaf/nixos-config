@@ -113,9 +113,7 @@ in
       ...
     }:
     {
-      imports = [
-        inputs.tmux-which-key.homeManagerModules.default
-      ];
+      nixpkgs.overlays = [ inputs.tmux-which-key.overlays.default ];
 
       programs.tmux = {
         # this is where plugins should go
