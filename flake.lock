@@ -348,22 +348,6 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1776548001,
-        "narHash": "sha256-ZSK0NL4a1BwVbbTBoSnWgbJy9HeZFXLYQizjb2DPF24=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "b12141ef619e0a9c1c84dc8c684040326f27cdcc",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_5": {
-      "locked": {
         "lastModified": 1794495034,
         "narHash": "sha256-E0hYoioqUtM2XmPPvYYpJgdADF5AW9oOoPSEiM9dTHQ=",
         "owner": "NixOS",
@@ -378,7 +362,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_6": {
+    "nixpkgs_5": {
       "locked": {
         "lastModified": 1787498568,
         "narHash": "sha256-9i/VTdusq/+NM/tz+J1Re+ojkMB8MBf0QshnYfzHz30=",
@@ -548,25 +532,27 @@
     },
     "tmux-which-key": {
       "inputs": {
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
-        "lastModified": 1787697164,
-        "narHash": "sha256-duqagS0h9q8kjxdUBOp7TvnHx3svNjLVJq1yV0Khfgw=",
-        "owner": "Nucc",
+        "lastModified": 1778948988,
+        "narHash": "sha256-eEFe85W/byPtxiRhdAaT22fEFNKsi5AEKsYAuDYcTCo=",
+        "owner": "alexwforsythe",
         "repo": "tmux-which-key",
-        "rev": "6c94cccb6d0b2b59aa470b583de69cfe2fc9a67a",
+        "rev": "85fb9756447b989f3b94e515d1e6ee7fec76cba2",
         "type": "github"
       },
       "original": {
-        "owner": "Nucc",
+        "owner": "alexwforsythe",
         "repo": "tmux-which-key",
         "type": "github"
       }
     },
     "wrapper-modules": {
       "inputs": {
-        "nixpkgs": "nixpkgs_5"
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
         "lastModified": 1795379121,
@@ -584,7 +570,7 @@
     },
     "wrappers": {
       "inputs": {
-        "nixpkgs": "nixpkgs_6"
+        "nixpkgs": "nixpkgs_5"
       },
       "locked": {
         "lastModified": 1795179450,
