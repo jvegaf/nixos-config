@@ -58,10 +58,10 @@ appimageTools.wrapAppImage {
       libGL
     ];
 
-  extraInstallCommands = ''
-    install -m 444 -D ${contents}/${pname}.desktop -t $out/share/applications
-    cp -r ${contents}/usr/share/icons $out/share
-  '';
+  # extraInstallCommands = ''
+  #   install -m 444 -D ${contents}/${pname}.desktop -t $out/share/applications
+  #   cp -r ${contents}/usr/share/icons $out/share
+  # '';
 
   meta = with lib; {
     description = "2-D post processing for PCB fabrication on CNC routers";
