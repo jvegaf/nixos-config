@@ -10,6 +10,8 @@
       nix-output-monitor
       inxi
       lshw
+      just
+      treefmt
     ];
   };
 }

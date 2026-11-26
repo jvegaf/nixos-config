@@ -1,0 +1,23 @@
+{
+  perSystem =
+    { pkgs, ... }:
+    {
+      devShells.default = pkgs.mkShell {
+        name = "nixos-config";
+        meta.description = "The default development shell for my NixOS configuration";
+
+        NIX_CONFIG = "extra-experimental-features = nix-command flakes";
+
+        # packages available in the dev shell
+        # inputsFrom = [ config.treefmt.build.devShell ];
+        #
+        packages = with pkgs; [
+          # the treefmt command
+          nix-output-monitor
+          just
+          pre-commit
+          yq-go
+        ];
+      };
+    };
+}
